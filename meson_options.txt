@@ -1,0 +1,55 @@
+option(
+	'tests',
+	type: 'feature',
+	value: 'auto',
+	yield: true,
+	description: 'Build unit tests with Boost Unit Test framework'
+)
+
+option(
+	'docs',
+	type: 'feature',
+	value: 'auto',
+	yield: true,
+	description: 'Generate API documentation with Doxygen'
+)
+
+option(
+	'examples',
+	type: 'feature',
+	value: 'auto',
+	yield: true,
+	description: 'Build example programs'
+)
+
+option(
+	'ftdipp',
+	type: 'feature',
+	value: 'auto',
+	yield: true,
+	description: 'Build C++ binding library libftdi1++'
+)
+
+option(
+	'ftdi_eeprom',
+	type: 'feature',
+	value: 'auto',
+	yield: true,
+	description: 'Build ftdi_eeprom'
+)
+
+# option(
+# 	'python_bindings',
+# 	type: 'feature',
+# 	value: 'auto',
+# 	yield: true,
+# 	description: 'Build python bindings via swig'
+# )
+
+option(
+	'link_python_library',
+	type: 'feature',
+	value: 'auto',
+	yield: true,
+	description: 'Link against python libraries'
+)
