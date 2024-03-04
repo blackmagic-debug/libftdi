@@ -19,6 +19,7 @@ ftdipp1_lib = library(
 	version: version_fixup,
 	soversion: 3,
 	install: install_targets or build_shared,
+	native: native,
 )
 
 ftdipp1_dep = declare_dependency(
@@ -27,7 +28,7 @@ ftdipp1_dep = declare_dependency(
 	dependencies: [ftdi1_dep],
 )
 
-meson.override_dependency('libftdipp1', ftdipp1_dep)
+meson.override_dependency('libftdipp1', ftdipp1_dep, native: native)
 
 if install_targets
 	install_headers(

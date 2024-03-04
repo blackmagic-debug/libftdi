@@ -29,6 +29,7 @@ foreach example : examples
 		include_directories: examples_include_directories,
 		dependencies: ftdi1_dep,
 		install: false,
+		native: native,
 	)
 endforeach
 
@@ -45,5 +46,6 @@ foreach example : examples_pp
 		include_directories: examples_include_directories,
 		dependencies: ftdipp1_dep,
 		install: false,
+		native: native,
 	)
 endforeach

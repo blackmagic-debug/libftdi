@@ -47,6 +47,7 @@ ftdi1_lib = library(
 	version: version_fixup,
 	soversion: 2,
 	install: install_targets or build_shared,
+	native: native,
 )
 
 ftdi1_dep = declare_dependency(
@@ -54,7 +55,7 @@ ftdi1_dep = declare_dependency(
 	include_directories: ftdi1_includes,
 )
 
-meson.override_dependency('libftdi1', ftdi1_dep)
+meson.override_dependency('libftdi1', ftdi1_dep, native: native)
 
 if install_targets
 	install_headers(

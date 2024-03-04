@@ -60,3 +60,10 @@ option(
 	yield: true,
 	description: 'Link against python libraries'
 )
+
+option(
+	'build_native',
+	type: 'boolean',
+	value: false,
+	description: 'build targets for the build machine instead of the host machine'
+)

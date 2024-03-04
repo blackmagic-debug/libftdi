@@ -3,7 +3,7 @@
 
 project(
 	'libftdi1',
-	'c', 'cpp',
+	'c',
 	version: '1.5',
 	default_options: [
 		'buildtype=debugoptimized',
@@ -17,14 +17,16 @@ project(
 
 pkg = import('pkgconfig')
 
-cc = meson.get_compiler('c')
+native = meson.is_cross_build() and get_option('build_native')
+cc = meson.get_compiler('c', native: native)
+add_languages('cpp', native: native)
 
 version = meson.project_version().split('.')
 
 version_fixup = '@0@.@1@.0'.format(version[0].to_int() + 1, version[1])
 
 if get_option('optimization') == '0'
-	add_project_arguments('-DDEBUG', language: ['c', 'cpp'])
+	add_project_arguments('-DDEBUG', language: ['c', 'cpp'], native: native)
 endif
 
 library_mode = get_option('default_library')
@@ -35,13 +37,13 @@ tests = get_option('tests')
 ftdi_eeprom = get_option('ftdi_eeprom')
 examples = get_option('examples')
 
-libusb = dependency('libusb-1.0')
+libusb = dependency('libusb-1.0', native: native)
 doxygen = find_program('doxygen', required: get_option('docs'), disabler: true, native: true)
 generate_doxyfile = find_program('meson/generate_doxyfile.py', required: true, native: true)
-boost = dependency('boost', required: ftdipp, disabler: true)
-confuse = dependency('confuse', required: ftdi_eeprom, disabler: true)
-libintl = dependency('intl', required: false)
-boost_test = dependency('boost', modules: ['unit_test_framework'], required: tests, disabler: true)
+boost = dependency('boost', required: ftdipp, disabler: true, native: native)
+confuse = dependency('confuse', required: ftdi_eeprom, disabler: true, native: native)
+libintl = dependency('intl', required: false, native: native)
+boost_test = dependency('boost', modules: ['unit_test_framework'], required: tests, disabler: true, native: native)
 
 subdir('doc')
 

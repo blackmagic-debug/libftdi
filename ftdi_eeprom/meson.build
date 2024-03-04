@@ -27,6 +27,7 @@ ftdi_eeprom = executable(
 	),
 	dependencies: [confuse, libintl, ftdi1_dep],
 	install: install_targets,
+	native: native,
 )
 
 if install_targets

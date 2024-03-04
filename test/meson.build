@@ -11,6 +11,7 @@ test_libftdi1 = executable(
 	cpp_tests_sources,
 	dependencies: [ftdi1_dep, boost_test],
 	install: false,
+	native: native,
 )
 
 test(
