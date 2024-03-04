@@ -27,6 +27,9 @@ if get_option('optimization') == '0'
 	add_project_arguments('-DDEBUG', language: ['c', 'cpp'])
 endif
 
+library_mode = get_option('default_library')
+build_shared = library_mode in ['shared', 'both']
+install_targets = get_option('install_targets')
 ftdipp = get_option('ftdipp')
 tests = get_option('tests')
 ftdi_eeprom = get_option('ftdi_eeprom')

@@ -8,7 +8,9 @@ cpp_tests_sources = files(
 
 test_libftdi1 = executable(
 	'test_libftdi1',
-	dependencies: [ftdi1_dep, boost_test]
+	cpp_tests_sources,
+	dependencies: [ftdi1_dep, boost_test],
+	install: false,
 )
 
 test(

@@ -26,12 +26,14 @@ ftdi_eeprom = executable(
 		'main.c',
 	),
 	dependencies: [confuse, libintl, ftdi1_dep],
-	install: true,
+	install: install_targets,
 )
 
-install_data(
-	files(
-		'example.conf'
-	),
-	install_dir: get_option('datadir') / 'doc',
-)
+if install_targets
+	install_data(
+		files(
+			'example.conf'
+		),
+		install_dir: get_option('datadir') / 'doc',
+	)
+endif

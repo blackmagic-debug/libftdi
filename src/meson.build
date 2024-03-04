@@ -45,7 +45,7 @@ ftdi1_lib = library(
 	dependencies: libusb,
 	version: version_fixup,
 	soversion: 2,
-	install: true,
+	install: install_targets or build_shared,
 )
 
 ftdi1_dep = declare_dependency(
@@ -55,7 +55,9 @@ ftdi1_dep = declare_dependency(
 
 meson.override_dependency('libftdi1', ftdi1_dep)
 
-install_headers(
-	ftdi1_headers,
-	subdir: meson.project_name()
-)
+if install_targets
+	install_headers(
+		ftdi1_headers,
+		subdir: meson.project_name()
+	)
+endif

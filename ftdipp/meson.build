@@ -17,7 +17,7 @@ ftdipp1_lib = library(
 	dependencies: [boost, libusb, ftdi1_dep],
 	version: version_fixup,
 	soversion: 3,
-	install: true,
+	install: install_targets or build_shared,
 )
 
 ftdipp1_dep = declare_dependency(
@@ -27,8 +27,9 @@ ftdipp1_dep = declare_dependency(
 
 meson.override_dependency('libftdipp1', ftdipp1_dep)
 
-install_headers(
-	ftdipp1_headers,
-	subdir: 'libftdipp1',
-)
-
+if install_targets
+	install_headers(
+		ftdipp1_headers,
+		subdir: 'libftdipp1',
+	)
+endif

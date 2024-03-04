@@ -1,4 +1,11 @@
 option(
+	'install_targets',
+	type: 'boolean',
+	value: true,
+	description: 'whether to install the built targets'
+)
+
+option(
 	'tests',
 	type: 'feature',
 	value: 'auto',
