@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2024 L. E. Segovia <amy@amyspark.me>
 # SPDX-License-Identifier: BSD-3-Clause
 
-include_directories = include_directories('.')
+ftdi1_includes = include_directories('.')
 
 snapshot_version = 'unknown'
 
@@ -42,6 +42,7 @@ ftdi1_headers = files(
 ftdi1_lib = library(
 	'ftdi1',
 	[ftdi1_sources, ftdi1_version],
+	include_directories: ftdi1_includes,
 	dependencies: libusb,
 	version: version_fixup,
 	soversion: 2,
@@ -50,7 +51,7 @@ ftdi1_lib = library(
 
 ftdi1_dep = declare_dependency(
 	link_with: ftdi1_lib,
-	include_directories: include_directories,
+	include_directories: ftdi1_includes,
 )
 
 meson.override_dependency('libftdi1', ftdi1_dep)
