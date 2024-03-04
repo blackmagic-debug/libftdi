@@ -24,6 +24,8 @@ foreach example : examples
 		files(
 			'@0@.c'.format(example),
 		),
+		# Make sure getopt and friends work and will be defined
+		c_args: ['-D_POSIX_SOURCE', '-D_GNU_SOURCE'],
 		include_directories: examples_include_directories,
 		dependencies: ftdi1_dep,
 		install: false,
